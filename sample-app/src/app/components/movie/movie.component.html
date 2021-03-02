@@ -1,11 +1,24 @@
-<div class="movie-container"
+<div 
+    *ngIf="!!movie"
+    class="movie-container"
     [ngStyle]="{border: movie.rating >8 ? '1px solid green' : '1px solid red'}"
     [ngClass]="{'goodMovie': movie.rating > 8}"
 >
+    <div [ngSwitch]="movie.type">
+        <div *ngSwitchCase="movieTypeEnum.Action">
+            Action
+        </div>
+        <div *ngSwitchCase="movieTypeEnum.Drama">
+            Drama
+        </div>
+        <div *ngSwitchDefault>
+            Hero Movie
+        </div>
+    </div>
+    <h1>{{ movie.name | uppercase }}</h1>
     <h1> {{movie.name}}</h1>
     <p>Main Charecter: {{movie.mainChar}}</p>
     <p>Rating: {{movie.rating}}</p>
     <p>Release: {{movie.releaseDate | date}}</p>
-    <button (click)= "changeMovie($event)">Change Movie</button>
 </div>
 
