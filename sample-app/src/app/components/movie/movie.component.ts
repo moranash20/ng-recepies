@@ -1,11 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { MovieType } from 'src/app/models/movie-type.enum';
+import { Movie } from 'src/app/models/movie.interface';
 
-export interface Movie{
-  name: string;
-  mainChar: string;
-  rating: number;
-  releaseDate: Date;
-}
+
 
 @Component({
   selector: 'app-movie',
@@ -20,21 +17,10 @@ export class MovieComponent implements OnInit {
     console.log('Movie works!');
   }
 
-  public movie: Movie = {
-    name: "Ironman",
-    mainChar: "Tony Stark",
-    rating:7.1,
-    releaseDate: new Date()
-  };
+  get movieTypeEnum(){
+    return MovieType;
+  }
 
-  public changeMovie(event: Event): void{
-    this.movie = {
-      name: "Captain Marvel",
-      mainChar: "Carol Denvers",
-      rating: 8.5,
-      releaseDate: new Date()
-      }
-    }
-  
+  @Input() movie!: Movie;
 
 }
