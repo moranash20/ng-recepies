@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { MovieType } from 'src/app/models/movie-type.enum';
 import { Movie } from 'src/app/models/movie.interface';
-
+import {EventEmitter} from '@angular/core';
 
 
 @Component({
@@ -22,5 +22,16 @@ export class MovieComponent implements OnInit {
   }
 
   @Input() movie!: Movie;
+
+  @Input() borderWidth!: number;
+
+  @Input() movieIndex! : number;
+
+  @Output() onDeleteMovie: EventEmitter<number> = new EventEmitter();
+
+  public deleteMovie(){
+    /*console.log(this.movieIndex);*/
+    this.onDeleteMovie.emit(this.movieIndex);
+  }
 
 }

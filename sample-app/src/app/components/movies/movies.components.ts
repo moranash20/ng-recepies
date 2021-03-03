@@ -35,6 +35,9 @@ export class MoviesComponent{
         }
     ];
 
+    public deleteMovie(movieIndex: number) : void{
+        this.listOfMovies.splice(movieIndex, 1);
+    }
 
     ngOnInit(){
         console.log('Movie on Init');
