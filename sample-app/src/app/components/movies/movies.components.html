@@ -1,8 +1,17 @@
 <div class="movies">
-    <app-movie *ngFor="let movie of listOfMovies; 
-        let i = index; 
-        let first = first; 
-        let last = last" 
-        [movie] = "movie">
+    <app-movie 
+        *ngFor="
+            let movie of listOfMovies; 
+            let i = index; 
+            let first = first; 
+            let last = last
+        " 
+        [movie] = "movie"
+        [borderWidth] = "i *2"
+        [movieIndex]="i"
+        (onDeleteMovie)="deleteMovie($event)"
+    >
+
+        
     </app-movie>
 </div>
