@@ -1,0 +1,59 @@
+<div 
+    *ngIf="!!product"
+    class="product-container"
+>
+    <div class="productName"><h3>{{ product.name | uppercase }}</h3></div>
+    <p>Price: {{product.price}}</p>
+    <div [ngSwitch]="product.description">
+        <div *ngSwitchCase="ProductDescriptionEnum.DryFood">
+            <img src="assets/img/pasta.png">
+        </div>
+        <div *ngSwitchCase="ProductDescriptionEnum.Cheese">
+            <img src="assets/img/cheese.png">
+        </div>
+        <div *ngSwitchCase="ProductDescriptionEnum.IceCream">
+            <img src="assets/img/iceCream.png">
+        </div>
+        <div *ngSwitchDefault>
+            <img src="assets/img/food.png">
+        </div>
+
+        <button class="addToListButton" style="margin:5px" (click)="addToList()">Add To List</button>
+<!--         <a href='location/page2'>
+        <button class="detailsButton" 
+            style="margin:5px" 
+            onclick="location.href='/page2'"
+            (click)="productDetails()"
+        > Details </button>
+        </a> -->
+        <button class="detailsButton" 
+            style="margin:5px" 
+            (click)="productDetails()"
+            
+        > Details </button>
+        
+  
+
+       <!--  <script type="text/javascript">
+            document.getElementById("detailsButton").onclick = "productDetails ()" {
+                location.href = "www.yoursite.com";
+            };
+        </script>
+ -->
+        
+    </div>
+
+    <div class="detailsWindow"
+        *ngIf="detailsStatus"
+    >
+    <a>
+        <p>Name: {{product.name}}</p>
+        <p>Id: {{product.id}}</p>
+        <p>Price: {{product.price}}</p>
+        <p>Description: {{product.description}}</p>
+        <p>ImgUrl: {{product.imgUrl}}</p>
+    </a>
+    </div>
+</div>
+
+
