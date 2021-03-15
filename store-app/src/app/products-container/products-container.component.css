@@ -1,0 +1,18 @@
+
+
+.products{
+    width: 100%;
+    background-color: whitesmoke;
+    text-align: right;
+}
+
+.shopping-list{
+    background-color: pink;
+    border-color: black;
+    border-style: solid;
+    text-align: left;   
+}
+
+
+
+

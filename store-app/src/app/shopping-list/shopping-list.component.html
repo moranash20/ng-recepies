@@ -1,0 +1,10 @@
+<div class="shoppingList" 
+    *ngFor="let item of shoppingItems">
+        <p>{{item.name}} {{item.price | currency: 'ILS' : 'symbol': '1.2-2'}}</p> 
+    <app-shopping-item      
+        [product] = "item"
+        (onDeleteFromShoppingList) = "deleteFromShoppingList($event)"
+    >
+    </app-shopping-item>   
+</div>
+        

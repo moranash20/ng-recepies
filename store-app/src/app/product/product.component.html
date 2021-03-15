@@ -1,0 +1,53 @@
+<div 
+    *ngIf="!!product"
+    class="product"
+>
+    <div class="productName"><h3>{{ product.name | uppercase }}</h3></div>
+    <td>
+        
+    </td>
+    <p>Price: {{product.price | currency: 'ILS' : 'symbol': '1.2-2'}}</p>
+    <div [ngSwitch]="product.description">
+        <div *ngSwitchCase="ProductDescriptionEnum.DryFood">
+            <img src="assets/img/pasta.png">
+        </div>
+        <div *ngSwitchCase="ProductDescriptionEnum.Cheese">
+            <img src="assets/img/cheese.png">
+        </div>
+        <div *ngSwitchCase="ProductDescriptionEnum.IceCream">
+            <img src="assets/img/iceCream.png">
+        </div>
+        <div *ngSwitchDefault>
+            <img src="assets/img/food.png">
+        </div>
+
+        <button class="addToListButton" style="margin:5px" 
+                (click)="addToList()"
+                >Add To List
+        </button>
+        
+        <button class="detailsButton" 
+            style="margin:5px" 
+            (click)="productDetails()"
+            > Details 
+            <!--  <a [routerLink]="['/products', product.id]" >Add To List</a>-->
+        </button>
+        
+    </div>
+
+    
+
+    <div class="detailsWindow"
+        *ngIf="detailsStatus"
+        
+    >
+        <a target="_blank">
+            <p>Name: {{product.name}}</p>
+            <p>Id: {{product.id}}</p>
+            <p>Price: {{product.price}}</p>
+        </a>
+    
+    </div>
+</div>
+
+

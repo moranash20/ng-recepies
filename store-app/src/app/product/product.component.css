@@ -1,0 +1,21 @@
+.product{
+    border-color: black;
+    border-style: solid;
+    text-align: center;
+}
+
+.productName{
+    text-shadow: cornflowerblue;
+    color: darkgreen;
+    
+}
+
+.addToListButton{
+    background-color: rgb(153, 153, 238);
+    
+}
+
+.detailsButton{
+    background-color: rgb(153, 153, 238);
+}
+
