@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MovieService } from 'src/app/services/movie.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { MovieService } from 'src/app/services/movie.service';
   templateUrl: './template-driven-forms.component.html',
   styleUrls: ['./template-driven-forms.component.scss']
 })
-export class TemplateDrivenFormsComponent implements OnInit {
+export class TemplateDrivenFormsComponent implements OnInit, AfterViewInit{
 
   @ViewChild('f') form: any;
 
@@ -19,7 +19,11 @@ export class TemplateDrivenFormsComponent implements OnInit {
   ]
 
   ngOnInit(): void {
-    console.log("random num: (Forms)" +this.movieService.random);
+    console.log("random num: (Forms)" +this.movieService);
+  }
+
+  ngAfterViewInit(){
+    console.log("Movies",this.movieService.getMovies());
   }
 
   public onSubmitForm():void{
