@@ -1,0 +1,8 @@
+<div class="productsList">
+    <app-product
+        *ngFor="let item of items"
+        [product] = "item"
+        (onAddToList) = "addProductToList($event)"
+    >
+    </app-product>
+</div>

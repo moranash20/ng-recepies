@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MovieService } from 'src/app/services/movie.service';
 
 @Component({
   selector: 'app-template-driven-forms',
@@ -9,7 +10,7 @@ export class TemplateDrivenFormsComponent implements OnInit {
 
   @ViewChild('f') form: any;
 
-  constructor() { }
+  constructor(private movieService: MovieService) { }
 
   public langs:Array<string> = [
     'English',
@@ -18,6 +19,7 @@ export class TemplateDrivenFormsComponent implements OnInit {
   ]
 
   ngOnInit(): void {
+    console.log("random num: (Forms)" +this.movieService.random);
   }
 
   public onSubmitForm():void{

@@ -1,9 +1,12 @@
 <div 
     *ngIf="!!product"
-    class="product-container"
+    class="product"
 >
     <div class="productName"><h3>{{ product.name | uppercase }}</h3></div>
-    <p>Price: {{product.price}}</p>
+    <td>
+        
+    </td>
+    <p>Price: {{product.price | currency: 'ILS' : 'symbol': '1.2-2'}}</p>
     <div [ngSwitch]="product.description">
         <div *ngSwitchCase="ProductDescriptionEnum.DryFood">
             <img src="assets/img/pasta.png">
@@ -18,41 +21,32 @@
             <img src="assets/img/food.png">
         </div>
 
-        <button class="addToListButton" style="margin:5px" (click)="addToList()">Add To List</button>
-<!--         <a href='location/page2'>
-        <button class="detailsButton" 
-            style="margin:5px" 
-            onclick="location.href='/page2'"
-            (click)="productDetails()"
-        > Details </button>
-        </a> -->
-        <button class="detailsButton" 
-            style="margin:5px" 
-            (click)="productDetails()"
-            
-        > Details </button>
+        <button class="addToListButton" style="margin:5px" 
+                (click)="addToList()"
+                >Add To List
+        </button>
         
-  
-
-       <!--  <script type="text/javascript">
-            document.getElementById("detailsButton").onclick = "productDetails ()" {
-                location.href = "www.yoursite.com";
-            };
-        </script>
- -->
+        <button class="detailsButton" 
+            style="margin:5px" 
+            (click)="productDetails()"
+            > Details 
+            <!--  <a [routerLink]="['/products', product.id]" >Add To List</a>-->
+        </button>
         
     </div>
 
+    
+
     <div class="detailsWindow"
         *ngIf="detailsStatus"
+        
     >
-    <a>
-        <p>Name: {{product.name}}</p>
-        <p>Id: {{product.id}}</p>
-        <p>Price: {{product.price}}</p>
-        <p>Description: {{product.description}}</p>
-        <p>ImgUrl: {{product.imgUrl}}</p>
-    </a>
+        <a target="_blank">
+            <p>Name: {{product.name}}</p>
+            <p>Id: {{product.id}}</p>
+            <p>Price: {{product.price}}</p>
+        </a>
+    
     </div>
 </div>
 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core'
 import { MovieType } from 'src/app/models/movie-type.enum';
 import { Movie } from 'src/app/models/movie.interface';
+import { MovieService } from 'src/app/services/movie.service';
 
 @Component({
     selector : "app-movies",
@@ -9,7 +10,11 @@ import { Movie } from 'src/app/models/movie.interface';
 })
 
 export class MoviesComponent{
-    title = "movies component works!"
+    title = "movies component works!";
+
+    constructor(private movieService: MovieService) { }
+
+    public movies: Movie[] = [];
 
     public listOfMovies: Movie[] = [
         {
@@ -40,7 +45,11 @@ export class MoviesComponent{
     }
 
     ngOnInit(){
-        console.log('Movie on Init');
+        console.log("random num: (Movies)" +this.movieService.getMovies());
+        this.movieService.setMovies(this.listOfMovies);
+        console.log("after: " +this.movieService.getMovies());
+
+        this.movies = this.movieService.getMovies();
     }
 
     /*ngOnChanges(changes: SimpleChanges): void{

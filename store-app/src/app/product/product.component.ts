@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Product, ProductDescription } from 'src/app/products/products.component';
+import { Product, ProductDescription, ProductsContainerComponent } from 'src/app/products-container/products-container.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -10,10 +11,10 @@ import { Product, ProductDescription } from 'src/app/products/products.component
 
 export class ProductComponent implements OnInit {
 
-  //addProductsList = []
   detailsStatus:boolean = false;
 
-  constructor() { }
+
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
   }
@@ -22,24 +23,25 @@ export class ProductComponent implements OnInit {
     return ProductDescription;
   }
 
-  @Input() product!: Product;
-  
-  @Input() borderWidth!: number;
+  @Input() product: Product;
+  @Input() productID: number;
 
-  @Input()
-  productIndex!: number;
-
-  @Output() onAddToList: EventEmitter<Product> = new EventEmitter();
+  @Output() onAddToList: EventEmitter<number> = new EventEmitter();
   @Output() onDetails: EventEmitter<Product> = new EventEmitter();
 
   public addToList(){
-    this.onAddToList.emit(this.product);
+    this.onAddToList.emit(this.product.id);
+    console.log("addToList()  - product", this.product.id);
   }
 
   public productDetails(){
     this.detailsStatus = true;
-    this.onDetails.emit(this.product);
-    console.log(this.product);
+    this.onDetails.emit(this.product);  
+    console.log("details");
+  }
+
+  onBack(): void {
+    this.router.navigate(['products']);
   }
 
   

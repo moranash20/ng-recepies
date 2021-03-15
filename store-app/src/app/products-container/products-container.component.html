@@ -1,0 +1,34 @@
+    
+    <div class="products">
+        <div class="row">
+            <div class="col-md-2">
+        <app-products-list
+            [items]="listOfProducts"
+            (onAddToList)="addProductToShoppingList($event)"
+        >
+        </app-products-list>
+    </div>
+    </div>
+    </div>
+
+
+
+<div class="shopping-list" *ngIf="!!shoppingList.length">
+    <table class="ShoppingList">
+        <thead>
+            <h2>Your Products</h2>
+            <tr> 
+                <div class="showShoppingList" *ngIf="!!shoppingList.length">
+                    <tr>
+                        <app-shopping-list 
+                            [shoppingItems]="shoppingList"         
+                            (onDeleteFromShoppingList)="deleteProductFromList($event)">
+                        </app-shopping-list>
+                    </tr>                           
+                </div>                     
+            </tr>
+        </thead>
+    </table>
+</div>
+
+
