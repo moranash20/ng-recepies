@@ -1,4 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MovieType } from 'src/app/models/movie-type.enum';
+import { Movie } from 'src/app/models/movie.interface';
 import { MovieService } from 'src/app/services/movie.service';
 
 @Component({
@@ -26,13 +28,19 @@ export class TemplateDrivenFormsComponent implements OnInit, AfterViewInit{
     console.log("Movies",this.movieService.getMovies());
   }
 
+  public onButtonClick(): void{
+    const movie: Movie = {
+      name: "Spiderman Far From Home",
+      mainChar: "Peter Parker",
+      rating: 9.5,
+      releaseDate: new Date(),
+      type: MovieType.Action
+    }
+    this.movieService.movieSubject$.next(movie);
+  }
+
   public onSubmitForm():void{
-    if(this.form.valid){
-      console.log("our form" +this.form);
-    }
-    else{
-       console.log("form not valid");
-    }
+    
   }
 
 }
