@@ -1,6 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Product, ProductDescription, ProductsContainerComponent } from 'src/app/products-container/products-container.component';
+
+import { Product } from '../models/product.interface';
+import { Description } from '../models/product-type.enum';
 import { ActivatedRoute, Router } from '@angular/router';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-product',
@@ -20,7 +23,7 @@ export class ProductComponent implements OnInit {
   }
 
   get ProductDescriptionEnum(){
-    return ProductDescription;
+    return Description;
   }
 
   @Input() product: Product;

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Product } from '../products-container/products-container.component';
+import { Product } from '../models/product.interface';
+
 
 @Component({
   selector: 'app-shopping-item',
