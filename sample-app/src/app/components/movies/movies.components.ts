@@ -44,12 +44,14 @@ export class MoviesComponent{
         this.listOfMovies.splice(movieIndex, 1);
     }
 
-    ngOnInit(){
-        console.log("random num: (Movies)" +this.movieService.getMovies());
+    ngOnInit(){        
         this.movieService.setMovies(this.listOfMovies);
-        console.log("after: " +this.movieService.getMovies());
-
         this.movies = this.movieService.getMovies();
+
+        this.movieService.movieSubject$.subscribe(data => {
+            console.log(data);
+            this.movies.push(data);
+        })
     }
 
     /*ngOnChanges(changes: SimpleChanges): void{
