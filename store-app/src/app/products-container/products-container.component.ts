@@ -56,11 +56,14 @@ export class ProductsContainerComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    console.log("sevice: (ProductsContainer) " +this.productService.getProducts());
     this.productService.setProducts(this.listOfProducts);
-    console.log("After (ProductsContainer) " +this.productService.getProducts());
 
     this.products = this.productService.getProducts();
+
+    this.productService.productSubject$.subscribe(data => {
+      console.log(data);
+      this.products.push(data);
+    })
   }
 
   ngAfterViewInit(){
@@ -103,4 +106,14 @@ export class ProductsContainerComponent implements OnInit {
     return this.shoppingList;
   }
 
+  public onAddProduct(){
+    const product: Product = {
+      name: "Chocolate",
+      id: 6,
+      price: 10,
+      description: Description.DryFood,
+      imgUrl: ""
+    }
+    this.productService.productSubject$.next(product);
+  }
 }

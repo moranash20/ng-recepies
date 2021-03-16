@@ -2,6 +2,7 @@ import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@
 import { Product } from '../models/product.interface';
 import { from } from 'rxjs';
 import { ProductService } from '../services/product.service';
+import { Description } from '../models/product-type.enum';
 
 @Component({
   selector: 'app-products-list',
@@ -30,5 +31,5 @@ export class ProductsListComponent implements OnInit, AfterViewInit {
     this.onAddToList.emit(id); 
   }
 
-
+  
 }
