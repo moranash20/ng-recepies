@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { from } from 'rxjs';
-import { Product, ProductDescription } from 'src/app/products-container/products-container.component';
+import { Product } from '../models/product.interface';
+
 
 
 @Component({

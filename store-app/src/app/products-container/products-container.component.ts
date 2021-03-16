@@ -1,54 +1,74 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, AfterViewInit } from '@angular/core';
+import {Product} from '../models/product.interface';
+import {Description } from '../models/product-type.enum';
+import { ProductService } from '../services/product.service';
 
 
-export interface Product{
+
+/* export interface Product{
   name: string;
   id: number;
   price: number;
   description: ProductDescription;
   imgUrl: string;
-}
+} */
 
-export enum ProductDescription{
+/* export enum ProductDescription{
   DryFood = "dry food",
   Cheese = "cheese",
   IceCream  = "ice cream"
-}
+} */
 
 @Component({
   selector: 'app-products-container',
   templateUrl: './products-container.component.html',
   styleUrls: ['./products-container.component.css']
 })
+
 export class ProductsContainerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private productService: ProductService) { }
+
+  public products: Product[] = [];
 
     public listOfProducts: Product[] = [
       {
         name: "Pasta",
         id: 1,
         price: 5,
-        description: ProductDescription.DryFood,
+        description: Description.DryFood,
         imgUrl: ""
       },
       {
         name: "Yellow Cheese",
         id: 2,
         price: 5,
-        description: ProductDescription.Cheese,
+        description: Description.Cheese,
         imgUrl: ""
       },
       {
         name: "Ice Cream",
         id: 3,
         price: 5,
-        description: ProductDescription.IceCream,
+        description: Description.IceCream,
         imgUrl: ""
       }
   ];
 
   ngOnInit(): void {
+    console.log("sevice: (ProductsContainer) " +this.productService.getProducts());
+    this.productService.setProducts(this.listOfProducts);
+    console.log("After (ProductsContainer) " +this.productService.getProducts());
+
+    this.products = this.productService.getProducts();
+  }
+
+  ngAfterViewInit(){
+    console.log('after ViewInit');
+  }
+
+  ngOnDestroy(): void{
+    console.log('Destroy');
   }
   
   @Input() product: Product;
