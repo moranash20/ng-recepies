@@ -8,18 +8,23 @@ import { AppComponent } from './app.component';
 import { MoviesComponent } from '../app/components/movies/movies.components';
 import { MovieComponent } from './components/movie/movie.component';
 import { TemplateDrivenFormsComponent } from './components/template-driven-forms/template-driven-forms.component';
+import { AlbumsComponent } from './components/albums/albums.component';
+import { HttpClientModule } from '@angular/common/http'
+
 
 @NgModule({
   declarations: [
     AppComponent,
     MoviesComponent,
     MovieComponent,
-    TemplateDrivenFormsComponent
+    TemplateDrivenFormsComponent,
+    AlbumsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
