@@ -11,6 +11,7 @@ import { ProductsContainerComponent } from './products-container/products-contai
 import { ShoppingItemComponent } from './shopping-item/shopping-item.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,7 @@ import { ShoppingItemComponent } from './shopping-item/shopping-item.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
