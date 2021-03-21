@@ -1,16 +1,25 @@
 
+    .products{
+        padding: 30px;
+        background-color: whitesmoke;
+        text-align: right;
+        gap: 10px;
+    }
+    
+    .shopping-list{
+        background-color: pink;
+        border-color: black;
+        border-style: solid;
+        text-align: left; 
+        width: 25%;  
+        display: flex;
+    }
 
-.products{
-    width: 100%;
-    background-color: whitesmoke;
-    text-align: right;
-}
 
-.shopping-list{
-    background-color: pink;
-    border-color: black;
-    border-style: solid;
-    text-align: left;   
+
+.addProduct{
+    width: 25%;
+    display: flex;
 }
 
 
