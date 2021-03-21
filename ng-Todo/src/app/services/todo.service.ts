@@ -21,7 +21,7 @@ export class TodoService {
       id: 2,
       title:"Grenadier, purple","description":"Uraeginthus granatina",
       isCompleted:false,
-      isArchived:true,
+      isArchived:false,
       endDate: 10/16/2020,
       selected: false
     },
@@ -29,7 +29,7 @@ export class TodoService {
       id: 3,
       title:"Lion, southern sea","description":"Otaria flavescens",
       isCompleted:false,
-      isArchived:true,
+      isArchived:false,
       endDate: 11/2/2020,
       selected: false
     },
