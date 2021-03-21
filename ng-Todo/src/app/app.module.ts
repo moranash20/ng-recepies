@@ -10,7 +10,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { TodoComponent } from './components/todo/todo.component';
 import { NewTodoComponent } from './components/new-todo/new-todo.component';
 import { TodoContainerComponent } from './todo-container/todo-container.component';
-
+import { FormsModule }   from '@angular/forms';
 
 
 @NgModule({
@@ -26,7 +26,8 @@ import { TodoContainerComponent } from './todo-container/todo-container.componen
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
