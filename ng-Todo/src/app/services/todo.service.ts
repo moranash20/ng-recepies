@@ -6,57 +6,26 @@ import { ITodo } from '../models/todo.interface';
   providedIn: 'root'
 })
 export class TodoService {
+  private todos: Array<ITodo> = [];
 
-  private mock: ITodo[] = [
-    {
-      id: 1,
-      title:"Grizzly bear",
-      description:"Ursus arctos",
-      isCompleted:false,
-      isArchived:true,
-      endDate: 3/13/2021,
-      selected: true
-    },
-    {
-      id: 2,
-      title:"Grenadier, purple","description":"Uraeginthus granatina",
-      isCompleted:false,
-      isArchived:false,
-      endDate: 10/16/2020,
-      selected: false
-    },
-    {
-      id: 3,
-      title:"Lion, southern sea","description":"Otaria flavescens",
-      isCompleted:false,
-      isArchived:false,
-      endDate: 11/2/2020,
-      selected: false
-    },
-    {
-      id: 4,
-      title:"Vulture, griffon","description":"Gyps fulvus",
-      isCompleted:false,
-      isArchived:false,
-      endDate: 4/14/2020,
-      selected: false
-    },
-    {
-      id: 5,
-      title:"Ass, asiatic wild","description":"Equus hemionus",
-      isCompleted:false,
-      isArchived:false,
-      endDate: 9/10/2020,
-      selected: false
-    },
-  ];
+  private _todoSubject: BehaviorSubject<Array<ITodo>> = new BehaviorSubject(this.todos);
 
-  private _todoSubject: BehaviorSubject<Array<ITodo>> = new BehaviorSubject(this.mock);
-
-  private _singleTodoSubject: BehaviorSubject<ITodo> = new BehaviorSubject(this.mock[0])
+  private _singleTodoSubject: BehaviorSubject<ITodo> = new BehaviorSubject(
+    this.todos.length ? this.todos[0] : null
+  );
+  
   constructor() { }
 
   public getTodos(): Observable<Array<ITodo>>{
+    if(!this._todoSubject.value.length){
+        const todosString = localStorage.getItem("todos");
+        if(todosString){
+          const existingTodos: Array<ITodo> = JSON.parse(todosString);
+          existingTodos[0].selected = true;
+          this._todoSubject.next(existingTodos);
+          this._singleTodoSubject.next(existingTodos[0]);
+        }
+    }
     return this._todoSubject.asObservable();
   }
 
@@ -67,4 +36,25 @@ export class TodoService {
   public setSelectedTodo(todo: ITodo){
     this._singleTodoSubject.next(todo);
   }
+
+  public addNewTodo(newTodo: ITodo): void{
+    //take existing todos
+    //add new todo to existing todos
+    //triger next tic in observable
+    console.log(newTodo);
+    const existingTodos: Array<ITodo> = this._todoSubject.value;
+    existingTodos.push(newTodo);
+    this._todoSubject.next(existingTodos);
+    localStorage.setItem("todos", JSON.stringify(existingTodos));
+  }
+
+  public onTodoAction(todoId: string, action: string): void{
+    const existingTodos: Array<ITodo> = this._todoSubject.value;
+
+    const todoIndex = existingTodos.findIndex(singleTodo => singleTodo.id = todoId);
+    existingTodos[todoIndex][action] = true;
+    this._todoSubject.next(existingTodos);
+    localStorage.setItem("todos", JSON.stringify(existingTodos));
+  }
+
 }
