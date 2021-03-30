@@ -3,8 +3,6 @@ import {Product} from '../models/product.interface';
 import {Description } from '../models/product-type.enum';
 import { ProductService } from '../services/product.service';
 
-
-
 /* export interface Product{
   name: string;
   id: number;
