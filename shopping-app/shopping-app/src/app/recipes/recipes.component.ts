@@ -7,6 +7,7 @@ import { Recipe } from './recipe.modle';
   styleUrls: ['./recipes.component.scss'],
 })
 export class RecipesComponent implements OnInit {
+  public selectedRecipe!: Recipe;
   constructor() {}
 
   ngOnInit(): void {}
